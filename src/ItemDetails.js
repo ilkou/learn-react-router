@@ -15,16 +15,20 @@ function ItemDetails({ match }) {
                     Authorization: 'f92de23b-37e50450-eb20d604-4c92c60c',
                 })
             });
+
             const dataJson = await data.json();
-            //console.log(dataJson);
-            setItem(dataJson.item);
+            console.log(dataJson);
+            if (dataJson.result === false)
+                setItem({name: "", images: {background: "https://www.itxchange.com/W0RdPr355/wp-content/uploads/2019/01/404-error.png"}});
+            else
+                setItem(dataJson.item);
         };
         trackPromise(fetchItems());
     }, [match.params.id]);
     return (
         <div className="App">
             <h1>{item.name}</h1>
-            <img src={item.images.background} alt={item.name}/>
+            <img src={item.images.background} alt={item.name} style={{maxWidth: "80%" }}/>
         </div>
     );
 }

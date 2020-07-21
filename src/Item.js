@@ -16,7 +16,10 @@ function Item({ match }) {
             });
             const dataJson = await data.json();
             //console.log(dataJson.items[match.params.item]);
-            setItem(dataJson.items[match.params.item]);
+            if (dataJson.items.hasOwnProperty(match.params.item))
+                setItem(dataJson.items[match.params.item]);
+            else
+                setItem([{id: 0, name: "wrong url", rarity: "rare"}])
         };
         trackPromise(fetchItems());
     }, [match.params.item]);
