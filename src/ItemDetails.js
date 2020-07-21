@@ -17,7 +17,7 @@ function ItemDetails({ match }) {
             });
 
             const dataJson = await data.json();
-            console.log(dataJson);
+            //console.log(dataJson);
             if (dataJson.result === false)
                 setItem({name: "", images: {background: "https://www.itxchange.com/W0RdPr355/wp-content/uploads/2019/01/404-error.png"}});
             else
