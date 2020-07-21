@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import {Link} from "react-router-dom";
+import { trackPromise } from 'react-promise-tracker';
 
 function Item({ match }) {
     const [item, setItem] = useState([]);
@@ -17,7 +18,7 @@ function Item({ match }) {
     };
 
     useEffect(() => {
-        fetchItems();
+        trackPromise(fetchItems());
     }, []);
     return (
         <div className="App">
