@@ -5,21 +5,21 @@ import { trackPromise } from 'react-promise-tracker';
 
 function Item({ match }) {
     const [item, setItem] = useState([]);
-    const fetchItems = async () => {
-        const data = await fetch('https://fortniteapi.io/items/list?lang=en', {
-            method: 'GET',
-            headers: new Headers({
-                Authorization: 'f92de23b-37e50450-eb20d604-4c92c60c',
-            })
-        });
-        const dataJson = await data.json();
-        //console.log(dataJson.items[match.params.item]);
-        setItem(dataJson.items[match.params.item]);
-    };
 
     useEffect(() => {
+        const fetchItems = async () => {
+            const data = await fetch('https://fortniteapi.io/items/list?lang=en', {
+                method: 'GET',
+                headers: new Headers({
+                    Authorization: 'f92de23b-37e50450-eb20d604-4c92c60c',
+                })
+            });
+            const dataJson = await data.json();
+            //console.log(dataJson.items[match.params.item]);
+            setItem(dataJson.items[match.params.item]);
+        };
         trackPromise(fetchItems());
-    }, []);
+    }, [match.params.item]);
     return (
         <div className="App">
             {item.map(item => (
