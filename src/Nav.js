@@ -8,7 +8,7 @@ function Nav() {
     return (
         <nav className="App">
             <Link to={"/"} style={navStyle}>
-                <img src={"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Cloud-API-Logo.svg/1139px-Cloud-API-Logo.svg.png"} alt={"logo"} width={"30px"}/>
+                <img src={"https://alexanderfo.com/wp-content/uploads/2019/12/1139px-Cloud-API-Logo.svg_.png"} alt={"logo"} width={"30px"}/>
                 <span>Fortnite</span>
             </Link>
             <ul className={"nav-links"}>
